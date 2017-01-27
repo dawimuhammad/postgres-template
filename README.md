@@ -12,6 +12,9 @@ Login to postgres and create your database
 
 Then update the credentials stored in /Config/secrets/postgresql.json
 
+	cd [app name here]
+	vapor build && vapor run
+
 Additionally, there is a dummy route in main.swift to test the database connection which can be tested by putting the url below in the browser:
 
     http://localhost:8080/version
