@@ -55,7 +55,7 @@ drop.group("api") { api in
         v1.group(BasicAuthMiddleware(), protect) { secured in
             
             // Get my data
-            secured.post("me", handler: usersController.me) 
+            secured.get("me", handler: usersController.me) 
             
             secured.resource("posts",PostController())
             
