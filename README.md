@@ -23,6 +23,8 @@ Authentication Routes
 
 	POST http://localhost:8080/api/v1/login
 	POST http://localhost:8080/api/v1/register
-	GET http://localhost:8080/api/v1/me
+	POST http://localhost:8080/api/v1/me
+	POST http://localhost:8080/api/v1/logout
+	POST http://localhost:8080/api/v1/update
 	GET http://localhost:8080/api/v1/posts
 

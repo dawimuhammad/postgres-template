@@ -54,8 +54,13 @@ drop.group("api") { api in
         let protect = ProtectMiddleware(error: Abort.custom(status: .unauthorized, message: "Unauthorized"))
         v1.group(BasicAuthMiddleware(), protect) { secured in
             
+            // Get my data
             secured.get("me", handler: usersController.me) 
-            secured.resource("posts",PostController())           
+            
+            secured.resource("posts",PostController())
+            
+            // Update my data
+            secured.post("update", handler: usersController.update)           
 
         }
     }

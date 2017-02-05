@@ -70,6 +70,29 @@ final class UsersController {
         return try JSON(node: request.user().makeNode())
     }
     
+    func update(request: Request) throws -> ResponseRepresentable {
+        do {
+            var user = try request.user()
+            
+            // Check for any editable fields in the request data
+            
+            if let email = request.data["email"]?.string {
+                user.email = email
+            }
+            
+            if let name = request.data["name"]?.string {
+                user.name = name
+            }
+            
+            try user.save()
+            
+            return try JSON(node: ["success": true, "user": user.makeNode()])
+            
+        } catch _ {
+            throw Abort.custom(status: Status.badRequest, message: "Unable to update the user's details")
+        }
+    }
+    
 }
 
 extension Request {
